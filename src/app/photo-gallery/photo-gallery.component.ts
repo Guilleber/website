@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { HostListener, Component, ElementRef, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import photos from '../../assets/imgs/meta.json';
 
 @Component({
@@ -18,8 +18,17 @@ export class PhotoGalleryComponent implements OnInit, AfterViewInit{
 
   ngOnInit() { }
 
-  ngAfterViewInit() {
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.updateColumnHeight(0);
+    this.updateColumnHeight(1);
+    this.updateColumnHeight(2);
+    console.log("Width: " + event.target.innerWidth);
+  }
+
+  ngAfterViewInit(): void {
     this.columns = [this.col1, this.col2, this.col3];
+    return;
   }
 
   getShortCol(): number {
@@ -34,20 +43,27 @@ export class PhotoGalleryComponent implements OnInit, AfterViewInit{
     return argmin
   }
 
-  updateColumnHeight(i: number) {
+  updateColumnHeight(i: number): void {
     let images_in_column = this.columns[i].nativeElement.children;
-    this.columns_heights[i] = images_in_column[images_in_column.length - 1].getBoundingClientRect().bottom;
+    if (images_in_column.length == 0) {
+      this.columns_heights[i] = 0
+    } else {
+      this.columns_heights[i] = images_in_column[images_in_column.length - 1].getBoundingClientRect().bottom;
+    }
+    return;
   }
 
-  public addMoreImages(n: number) {
+  public addMoreImages(n: number): void {
     for (let i = 0; i < n; i++) {
       if (this.index >= photos.length) {
-        break;
+        return;
       }
       let shortest = this.getShortCol();
-      this.columns[shortest].nativeElement.insertAdjacentHTML('beforeend', '<img src="' + photos[this.index]["thumbnail"] + '" class= "w-100 shadow rounded mb-4"/>');
+      let template = '<a href="' + photos[this.index]["original"] + '" ><img src="' + photos[this.index]["thumbnail"] + '" class= "w-100 shadow rounded mb-4"/></a>'
+      this.columns[shortest].nativeElement.insertAdjacentHTML('beforeend', template);
       this.index += 1
       this.updateColumnHeight(shortest)
     }
+    return;
   }
 }
