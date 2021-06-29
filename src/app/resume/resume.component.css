@@ -1,0 +1,12 @@
+.main-body {
+  margin: auto;
+  width: 80%;
+  margin-top: 20px;
+}
+
+@media(max-width: 800px) {
+  .main-body {
+    margin: 20px;
+    width: 95%;
+  }
+}

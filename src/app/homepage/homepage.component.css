@@ -1,6 +1,13 @@
-.main-content {
+.main-body {
   margin: auto;
-  margin-top: 20px;
   width: 80%;
+  margin-top: 20px;
   padding: 15px;
+}
+
+@media(max-width: 800px) {
+  .main-body {
+    margin: 20px;
+    width: auto;
+  }
 }
