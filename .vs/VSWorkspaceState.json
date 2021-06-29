@@ -3,8 +3,10 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\custom-navbar"
+    "\\src\\app\\custom-navbar",
+    "\\src\\app\\homepage",
+    "\\src\\app\\resume"
   ],
-  "SelectedNode": "\\src\\app\\app.module.ts",
+  "SelectedNode": "\\src\\app\\custom-navbar\\custom-navbar.component.css",
   "PreviewInSolutionExplorer": false
 }

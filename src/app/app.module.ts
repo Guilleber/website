@@ -6,17 +6,25 @@ import { AppComponent } from './app.component';
 import { CustomNavbarComponent } from './custom-navbar/custom-navbar.component';
 import { ResumeComponent } from './resume/resume.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { PhotosComponent } from './photos/photos.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { PhotoGalleryComponent } from './photo-gallery/photo-gallery.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomNavbarComponent,
     ResumeComponent,
-    HomepageComponent
+    HomepageComponent,
+    PhotosComponent,
+    PhotoGalleryComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
