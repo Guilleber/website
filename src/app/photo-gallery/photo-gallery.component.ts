@@ -1,5 +1,6 @@
-import { HostListener, Component, ElementRef, OnInit, OnDestroy, AfterViewInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { HostListener, Component, ComponentRef, OnInit, OnDestroy, AfterViewInit, ViewChild, ViewContainerRef, ComponentFactory, ComponentFactoryResolver } from '@angular/core';
 import photos from '../../assets/imgs/meta.json';
+import { GalleryImgComponent } from '../gallery-img/gallery-img.component';
 
 
 export interface DialogData {
@@ -13,14 +14,15 @@ export interface DialogData {
 })
 export class PhotoGalleryComponent implements OnInit, AfterViewInit, OnDestroy{
   index: number = 0;
-  @ViewChild('col1') col1!: ElementRef;
-  @ViewChild('col2') col2!: ElementRef;
-  @ViewChild('col3') col3!: ElementRef;
+  @ViewChild('col1', { read: ViewContainerRef }) col1!: ViewContainerRef;
+  @ViewChild('col2', { read: ViewContainerRef }) col2!: ViewContainerRef;
+  @ViewChild('col3', { read: ViewContainerRef }) col3!: ViewContainerRef;
   columns_heights = [0, 0, 0];
-  columns: ElementRef[] = [];
+  columns: ViewContainerRef[] = [];
+  images: ComponentRef<GalleryImgComponent>[][] = [[],[],[]];
   shortest_column = 0;
 
-  constructor() { }
+  constructor(private resolver: ComponentFactoryResolver) { }
 
   ngOnInit() {
 
@@ -57,15 +59,24 @@ export class PhotoGalleryComponent implements OnInit, AfterViewInit, OnDestroy{
     return argmin;
   }
 
+  addImage(col_id: number, img_id: number, horizontal: boolean) {
+    const factory: ComponentFactory<GalleryImgComponent> = this.resolver.resolveComponentFactory(GalleryImgComponent);
+    let image: ComponentRef<GalleryImgComponent> = this.columns[col_id].createComponent(factory);
+    image.instance.original = photos[img_id]['original'];
+    image.instance.thumbnail = photos[img_id]['thumbnail'];
+    image.instance.horizontal = horizontal;
+    image.changeDetectorRef.detectChanges();
+    this.images[col_id].push(image);
+  }
+
   public addMoreImages(n: number): void {
     for (let i = 0; i < n; i++) {
       if (this.index >= photos.length) {
         return;
       }
       console.log(this.index);
-      let template = '<a href="' + photos[this.index]["original"] + '"><img src="' + photos[this.index]["thumbnail"] + '" class= "w-100 shadow-1-strong rounded mb-4"/></a>'
 
-      this.columns[this.shortest_column].nativeElement.insertAdjacentHTML('beforeend', template);
+      this.addImage(this.shortest_column, this.index, photos[this.index]['ratio'] < 1.);
       this.columns_heights[this.shortest_column] += photos[this.index]['ratio'];
       this.index += 1;
       this.shortest_column = this.getShortCol();

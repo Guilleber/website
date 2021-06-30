@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, AfterViewInit, HostListener, ChangeDetectorRef } from '@angular/core';
 import { ModalDirective } from 'angular-bootstrap-md';
 
 @Component({
@@ -8,17 +8,27 @@ import { ModalDirective } from 'angular-bootstrap-md';
 })
 export class GalleryImgComponent implements OnInit, AfterViewInit {
   @ViewChild(ModalDirective) modal!: ModalDirective;
-  @Input() original: string = ""
-  @Input() thumbnail: string = ""
+  @Input() original: string = "";
+  @Input() thumbnail: string = "";
+  @Input() horizontal: boolean = true;
+  win_width!: number;
+  win_height!: number;
 
-  constructor() { }
+  constructor(private ref: ChangeDetectorRef) { }
 
   ngOnInit(): void {
+    this.win_width = window.innerWidth * 0.9;
+    this.win_height = window.innerHeight * 0.9;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.win_width = window.innerWidth * 0.9;
+    this.win_height = window.innerHeight * 0.9;
+    this.ref.detectChanges();
   }
 
   ngAfterViewInit() {
-    this.original = "assets/imgs/photos/DSCF1605.jpg";
-    this.thumbnail = "assets/imgs/thumbnails/DSCF1605.jpg";
   }
 
 }

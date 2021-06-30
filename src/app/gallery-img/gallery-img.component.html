@@ -12,11 +12,12 @@
      class="modal fade"
      tabindex="-1"
      role="dialog"
+     aria-labelledby="myModalLabel"
      aria-hidden="true"
      style="overflow-y: auto">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+  <div class="modal-dialog modal-dialog-centered" [ngClass]="{'modal-lg': horizontal}" role="document">
     <div class="modal-content">
-      <img src="{{original}}"/>
+      <img src="{{original}}" />
     </div>
   </div>
 </div>
