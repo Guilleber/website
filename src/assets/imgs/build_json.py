@@ -10,4 +10,5 @@ for f in files:
   width, height = im.size
   data.append({'original': 'assets/imgs/photos/' + f, 'thumbnail': 'assets/imgs/thumbnails/' + f, 'ratio': float(height)/width})
 
+data.reverse()
 json.dump(data, open('./meta.json', 'w'))

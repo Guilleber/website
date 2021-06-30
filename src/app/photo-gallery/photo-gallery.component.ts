@@ -18,8 +18,6 @@ export class PhotoGalleryComponent implements OnInit, AfterViewInit, OnDestroy{
   @ViewChild('col3') col3!: ElementRef;
   columns_heights = [0, 0, 0];
   columns: ElementRef[] = [];
-
-  private observer!: IntersectionObserver;
   shortest_column = 0;
 
   constructor() { }
@@ -52,11 +50,11 @@ export class PhotoGalleryComponent implements OnInit, AfterViewInit, OnDestroy{
     let argmin = 0;
     for (let i = 1; i < 3; i++) {
       if (this.columns_heights[i] < min) {
-        min = this.columns_heights[i]
-        argmin = i
+        min = this.columns_heights[i];
+        argmin = i;
       }
     }
-    return argmin
+    return argmin;
   }
 
   public addMoreImages(n: number): void {
@@ -65,7 +63,7 @@ export class PhotoGalleryComponent implements OnInit, AfterViewInit, OnDestroy{
         return;
       }
       console.log(this.index);
-      let template = '<a href="' + photos[this.index]["original"] + '"><img src="' + photos[this.index]["thumbnail"] + '" class= "w-100 shadow rounded mb-4"/></a>'
+      let template = '<a href="' + photos[this.index]["original"] + '"><img src="' + photos[this.index]["thumbnail"] + '" class= "w-100 shadow-1-strong rounded mb-4"/></a>'
 
       this.columns[this.shortest_column].nativeElement.insertAdjacentHTML('beforeend', template);
       this.columns_heights[this.shortest_column] += photos[this.index]['ratio'];

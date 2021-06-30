@@ -1,0 +1,23 @@
+<div class="view overlay rounded mb-4">
+
+  <img src="{{thumbnail}}" class="w-100 img-fluid" alt="">
+
+  <a (click)="frame.show()"><div class="mask flex-center"></div></a>
+
+</div>
+
+<!--Modal-->
+<div mdbModal
+     #frame="mdbModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-hidden="true"
+     style="overflow-y: auto">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <img src="{{original}}"/>
+    </div>
+  </div>
+</div>
+<!--/.Modal-->

@@ -14,3 +14,7 @@
     width: 95%;
   }
 }
+
+.gallery-img:hover {
+    opacity: 0.5;
+}
