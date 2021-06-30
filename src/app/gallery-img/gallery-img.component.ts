@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild, AfterViewInit, HostListener, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, AfterViewInit, HostListener, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { ModalDirective } from 'angular-bootstrap-md';
 
 @Component({
@@ -8,27 +8,32 @@ import { ModalDirective } from 'angular-bootstrap-md';
 })
 export class GalleryImgComponent implements OnInit, AfterViewInit {
   @ViewChild(ModalDirective) modal!: ModalDirective;
+  @ViewChild('hr') img_el!: ElementRef;
   @Input() original: string = "";
   @Input() thumbnail: string = "";
+  hr_img: string = "";
   @Input() horizontal: boolean = true;
-  win_width!: number;
-  win_height!: number;
+  private observer!: IntersectionObserver;
 
   constructor(private ref: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    this.win_width = window.innerWidth * 0.9;
-    this.win_height = window.innerHeight * 0.9;
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
-    this.win_width = window.innerWidth * 0.9;
-    this.win_height = window.innerHeight * 0.9;
-    this.ref.detectChanges();
   }
 
   ngAfterViewInit() {
+    let options = {
+      root: null,
+      threshold: 0
+    };
+
+    this.observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        this.hr_img = this.original;
+        this.ref.detectChanges();
+      }
+    }, options);
+
+    this.observer.observe(this.img_el.nativeElement);
   }
 
 }
