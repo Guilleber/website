@@ -5,8 +5,12 @@
     "\\src\\app",
     "\\src\\app\\custom-navbar",
     "\\src\\app\\homepage",
-    "\\src\\app\\resume"
+    "\\src\\app\\photo-gallery",
+    "\\src\\app\\photos",
+    "\\src\\app\\resume",
+    "\\src\\assets",
+    "\\src\\assets\\imgs"
   ],
-  "SelectedNode": "\\src\\app\\custom-navbar\\custom-navbar.component.css",
+  "SelectedNode": "\\src\\index.html",
   "PreviewInSolutionExplorer": false
 }
