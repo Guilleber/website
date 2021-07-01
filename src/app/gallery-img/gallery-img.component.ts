@@ -11,6 +11,7 @@ export class GalleryImgComponent implements OnInit, AfterViewInit {
   @ViewChild('hr') img_el!: ElementRef;
   @Input() original: string = "";
   @Input() thumbnail: string = "";
+  @Input() caption: string = "";
   hr_img: string = "";
   @Input() horizontal: boolean = true;
   private observer!: IntersectionObserver;

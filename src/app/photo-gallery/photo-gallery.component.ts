@@ -43,7 +43,7 @@ export class PhotoGalleryComponent implements OnInit, AfterViewInit, OnDestroy{
 
   ngAfterViewInit(): void {
     this.columns = [this.col1, this.col2, this.col3];
-    this.addMoreImages(5);
+    this.addMoreImages(10);
     return;
   }
 
@@ -64,6 +64,7 @@ export class PhotoGalleryComponent implements OnInit, AfterViewInit, OnDestroy{
     let image: ComponentRef<GalleryImgComponent> = this.columns[col_id].createComponent(factory);
     image.instance.original = photos[img_id]['original'];
     image.instance.thumbnail = photos[img_id]['thumbnail'];
+    image.instance.caption = photos[img_id]['caption']
     image.instance.horizontal = horizontal;
     image.changeDetectorRef.detectChanges();
     this.images[col_id].push(image);
