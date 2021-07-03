@@ -28,7 +28,7 @@ export class GalleryImgComponent implements OnInit, AfterViewInit {
     };
 
     this.observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
+      if (entry.isIntersecting && this.hr_img.length == 0) {
         this.hr_img = this.original;
         this.ref.detectChanges();
       }

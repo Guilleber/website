@@ -2,7 +2,7 @@
 
   <img src="{{thumbnail}}" class="w-100 img-fluid" alt="">
 
-  <a (click)="frame.show()"><div class="mask img-mask flex-center"><p class="caption">{{caption}}</p></div></a>
+  <a (click)="frame.show()"><div class="mask img-mask rounded flex-center"><p class="caption">{{caption}}</p></div></a>
 
 </div>
 
@@ -15,7 +15,7 @@
      aria-labelledby="myModalLabel"
      aria-hidden="true"
      style="overflow-y: auto">
-  <div class="modal-dialog modal-dialog-centered" [ngClass]="{'modal-lg': horizontal}" role="document">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" [ngClass]="{'modal-lg': horizontal}" role="document">
     <div class="modal-content">
       <img #hr src="{{hr_img}}" />
     </div>

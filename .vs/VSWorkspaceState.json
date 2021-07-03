@@ -4,13 +4,13 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\custom-navbar",
-    "\\src\\app\\homepage",
     "\\src\\app\\photo-gallery",
     "\\src\\app\\photos",
     "\\src\\app\\resume",
     "\\src\\assets",
-    "\\src\\assets\\imgs"
+    "\\src\\assets\\imgs",
+    "\\src\\environments"
   ],
-  "SelectedNode": "\\src\\index.html",
+  "SelectedNode": "\\src\\app\\custom-navbar\\custom-navbar.component.html",
   "PreviewInSolutionExplorer": false
 }
