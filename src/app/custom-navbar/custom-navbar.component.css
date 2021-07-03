@@ -11,7 +11,7 @@
 
 .nav-img {
   filter: invert(100%);
-  transition: transform .7s ease-in-out;
+  transition: transform .5s ease-in-out;
   height: 100px;
   width: auto;
 }

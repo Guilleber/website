@@ -9,3 +9,11 @@
 .caption {
   align-self: flex-end;
 }
+
+.img-div {
+  transition: transform .3s ease-in-out;
+}
+
+.img-div:hover {
+  transform: scale(1.02)
+}
