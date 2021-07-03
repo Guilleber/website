@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { PhotoGalleryComponent } from './photo-gallery/photo-gallery.component';
 import { GalleryImgComponent } from './gallery-img/gallery-img.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { GalleryImgComponent } from './gallery-img/gallery-img.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatGridListModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
