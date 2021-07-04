@@ -3,14 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\custom-navbar",
+    "\\src\\app\\gallery-img",
+    "\\src\\app\\homepage",
     "\\src\\app\\photo-gallery",
-    "\\src\\app\\photos",
     "\\src\\app\\resume",
     "\\src\\assets",
     "\\src\\assets\\imgs",
     "\\src\\environments"
   ],
-  "SelectedNode": "\\src\\app\\custom-navbar\\custom-navbar.component.html",
+  "SelectedNode": "\\src\\app\\homepage\\homepage.component.html",
   "PreviewInSolutionExplorer": false
 }
