@@ -15,9 +15,9 @@
      aria-labelledby="myModalLabel"
      aria-hidden="true"
      style="overflow-y: auto">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" [ngClass]="{'modal-lg': horizontal}" role="document">
-    <div class="modal-content">
-      <img #hr src="{{hr_img}}" />
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document" style="max-height: 90vh; width: auto">
+    <div class="modal-content" style="max-height: 90vh; width: auto">
+      <img #hr class="window-height" src="{{hr_img}}" style="max-height: 90vh; width: auto"/>
     </div>
   </div>
 </div>
